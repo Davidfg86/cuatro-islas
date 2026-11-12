@@ -2,192 +2,120 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Las cuatro islas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#EAF6FF;--ink:#1B2A49;--card:#fff;--line:#BFD6EE;--ok:#17824A;--no:#C23550;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#EAF6FF;--ink:#1B2A49;--card:#fff;--line:#BFD6EE;--ok:#17824A;--no:#C23550;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}
-*{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Andika",Verdana,"Trebuchet MS",sans-serif;line-height:1.5;min-height:100vh}
-main{max-width:560px;margin:0 auto;padding:20px 16px 40px}
-h1{font-size:2rem;line-height:1.15;margin:8px 0 4px}
-h2{font-size:1.5rem;line-height:1.3;margin:8px 0}
-p{margin:0 0 12px}
-button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
-.sub{font-size:1.1rem;margin-bottom:18px}
-.total{display:inline-block;background:var(--card);border:3px solid var(--line);border-radius:999px;padding:2px 14px;font-weight:700;margin-bottom:16px}
-.map{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.isl{background:var(--card);border:4px solid var(--c);padding:18px 10px 14px;text-align:center;font-weight:700;font-size:1.05rem;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:transform .15s}
-.isl:nth-child(1){border-radius:46% 54% 50% 50%/55% 45% 55% 45%}
-.isl:nth-child(2){border-radius:54% 46% 45% 55%/48% 56% 44% 52%}
-.isl:nth-child(3){border-radius:50% 50% 55% 45%/45% 55% 45% 55%}
-.isl:nth-child(4){border-radius:45% 55% 48% 52%/54% 46% 54% 46%}
-.isl:hover{transform:scale(1.04)}
-.isl .em{font-size:3rem;line-height:1;background:var(--c);border-radius:50%;width:74px;height:74px;display:grid;place-items:center}
-.isl small{display:block;font-weight:400;font-size:.9rem}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-.back{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}
-.dots{display:flex;gap:6px}
-.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}
-.dots i.on{background:var(--c)}
-.dots i.cur{outline:3px solid var(--ink)}
-.q{background:var(--card);border:4px solid var(--c);border-radius:28px;padding:18px;text-align:center;margin-bottom:16px}
-.q .em{font-size:4rem;line-height:1.1}
-.snd{background:var(--bg);border:3px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:700;margin-top:4px}
-.opts{display:grid;gap:12px}
-.opt{background:var(--card);border:4px solid var(--line);border-radius:20px;min-height:60px;padding:10px 16px;font-size:1.35rem;font-weight:700}
-.opt:hover:not(:disabled){border-color:var(--c)}
-.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
-.opt.no{background:var(--no);border-color:var(--no);color:#fff}
-.opt:disabled{cursor:default}
-#fb{margin-top:16px;font-size:1.2rem;font-weight:700;min-height:2.4em}
-.next{background:var(--c);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.2rem;font-weight:700;margin-top:8px}
-.end{text-align:center}
-.stars{font-size:3rem;letter-spacing:4px;margin:12px 0}
-.end .next{margin:6px}
-.end .back{margin:6px;font-size:1.1rem;padding:10px 22px}
-@media (prefers-reduced-motion:reduce){.isl{transition:none}.isl:hover{transform:none}}
-</style>
-</head>
-<body>
-<main id="app"></main>
-<script>
-const $=s=>document.querySelector(s);
-const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Andika",Verdana,"Trebuchet MS",sans-serif;line-height:1.5;min-height:100vh}main{max-width:560px;margin:0 auto;padding:20px 16px 40px}h1{font-size:2rem;line-height:1.15;margin:8px 0 4px}h2{font-size:1.5rem;line-height:1.3;margin:8px 0}p{margin:0 0 12px}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}.sub{font-size:1.1rem;margin-bottom:18px}.summary{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.pill,.total{display:inline-block;background:var(--card);border:3px solid var(--line);border-radius:999px;padding:2px 14px;font-weight:700}.panel{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px 14px;margin-bottom:16px}.map{display:grid;grid-template-columns:1fr 1fr;gap:14px}.isl{background:var(--card);border:4px solid var(--c);padding:18px 10px 14px;text-align:center;font-weight:700;font-size:1.05rem;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:transform .15s}.isl:nth-child(1){border-radius:46% 54% 50% 50%/55% 45% 55% 45%}.isl:nth-child(2){border-radius:54% 46% 45% 55%/48% 56% 44% 52%}.isl:nth-child(3){border-radius:50% 50% 55% 45%/45% 55% 45% 55%}.isl:nth-child(4){border-radius:45% 55% 48% 52%/54% 46% 54% 46%}.isl:hover:not(:disabled){transform:scale(1.04)}.isl:disabled{opacity:.62;cursor:default}.isl .em{font-size:3rem;line-height:1;background:var(--c);border-radius:50%;width:74px;height:74px;display:grid;place-items:center}.isl small{display:block;font-weight:400;font-size:.9rem}.lock{font-size:.78rem}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.back,.soft{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}.dots{display:flex;gap:6px}.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--c)}.dots i.cur{outline:3px solid var(--ink)}.q{background:var(--card);border:4px solid var(--c);border-radius:28px;padding:18px;text-align:center;margin-bottom:16px}.q .em{font-size:4rem;line-height:1.1}.tag{display:inline-block;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700}.snd{background:var(--bg);border:3px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:700;margin-top:4px}.opts{display:grid;gap:12px}.opt{background:var(--card);border:4px solid var(--line);border-radius:20px;min-height:60px;padding:10px 16px;font-size:1.35rem;font-weight:700}.opt:hover:not(:disabled){border-color:var(--c)}.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{background:var(--no);border-color:var(--no);color:#fff}.opt:disabled{cursor:default}#fb{margin-top:16px;font-size:1.2rem;font-weight:700;min-height:2.4em}.next{background:var(--c);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.2rem;font-weight:700;margin-top:8px}.end{text-align:center}.stars{font-size:3rem;letter-spacing:4px;margin:12px 0}.end .next{margin:6px}.end .back{margin:6px;font-size:1.1rem;padding:10px 22px}.levelrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}.level{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700}.level.sel{background:var(--ink);color:var(--card)}.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:7px 0}.bar span{display:block;height:100%;background:#F2A413}.notice{background:var(--card);border:3px solid var(--line);border-radius:20px;padding:10px 14px;margin:12px 0;font-weight:700}.badgegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.badge{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px;text-align:center}.badge.off{opacity:.48;filter:grayscale(1)}.badge .em{font-size:2.5rem}.badge b,.badge small{display:block}@media (prefers-reduced-motion:reduce){.isl{transition:none}.isl:hover{transform:none}}@media(max-width:420px){.map{gap:10px}.isl{min-height:165px;padding:14px 7px}.summary{gap:5px}.pill{font-size:.86rem;padding:2px 9px}}
+</style></head><body><main id="app"></main><script>
+const $=s=>document.querySelector(s),rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
-const mk=(e,q,r,w,say)=>({e,q,r,w,say});
-const EN="¿Cómo se dice en inglés?";
-const ie=(e,r,w)=>mk(e,EN,r,w,r);
-
+const mk=(e,q,r,w,n=1,say="",topic="general")=>({e,q,r,w,n,say,topic});
+const ie=(e,es,en,w,n=1,topic="english")=>mk(e,"¿Cómo se dice «"+es+"» en inglés?",en,w,n,en,topic);
 const AREAS={
- lengua:{n:"Lengua",e:"✏️",c:"#E8467C",d:"letras y palabras"},
- mates:{n:"Matemáticas",e:"🔢",c:"#3B6EF5",d:"números y formas"},
- medio:{n:"Conocimiento del medio",e:"🌱",c:"#22A765",d:"naturaleza y entorno"},
- ingles:{n:"Inglés",e:"🇬🇧",c:"#F2A413",d:"English"}
+ lengua:{n:"Lengua",e:"✏️",c:"#e8467c",d:"letras y palabras",unlock:0},
+ mates:{n:"Matemáticas",e:"🔢",c:"#3b6ef5",d:"números y formas",unlock:0},
+ medio:{n:"Conocimiento del medio",e:"🌱",c:"#22a765",d:"naturaleza, entorno y la casa",unlock:2},
+ ingles:{n:"Inglés",e:"🇬🇧",c:"#f2a413",d:"English y Science",unlock:4}
 };
-
 const BANK={
- lengua:[
-  mk("🏠","¿Qué letra falta en ca_a?","s",["z","c"]),
-  mk("🦋","¿Cuántas sílabas tiene mariposa?","4",["3","5"]),
-  mk("🏙️","¿Cuál está bien escrito?","Madrid",["madrid","MAdrid"]),
-  mk("🪟","¿Cuál está bien escrito?","ventana",["bentana","ventanna"]),
-  mk("📝","Falta un signo al final: Me gusta el chocolate_","punto",["interrogación","coma"]),
-  mk("⛺","¿Qué letra falta en ca_po?","m",["n","b"]),
-  mk("🏃","¿Cuál de estas palabras es una acción?","correr",["mesa","rojo"]),
-  mk("🐘","Lo contrario de grande es…","pequeño",["alto","gordo"]),
-  mk("☀️","¿Cuántas sílabas tiene sol?","1",["2","3"]),
-  mk("🐱","¿Qué palabra rima con gato?","pato",["luna","mesa"]),
-  mk("✏️","El plural de lápiz es…","lápices",["lápizes","lápizs"]),
-  mk("👧","Las niñas ___ en el parque.","juegan",["juega","jugamos"])
- ],
- medio:[
-  mk("👀","¿Cuántos sentidos tenemos?","5",["3","7"]),
-  mk("👁️","¿Con qué parte del cuerpo vemos?","con los ojos",["con los oídos","con la nariz"]),
-  mk("🐔","¿Cuál de estos animales pone huevos?","la gallina",["la vaca","el perro"]),
-  mk("🍂","¿En qué estación caen las hojas de los árboles?","otoño",["verano","primavera"]),
-  mk("🌻","¿Qué necesitan las plantas para crecer?","agua y luz",["solo chocolate","nada"]),
-  mk("🌿","¿Qué parte de la planta absorbe el agua?","la raíz",["la flor","la hoja"]),
-  mk("🚒","¿Qué oficio apaga los incendios?","bombero",["panadero","pintor"]),
-  mk("🧊","Un cubito de hielo es agua…","sólida",["líquida","gaseosa"]),
-  mk("🐟","¿Dónde vive un pez?","en el agua",["en un árbol","en una cueva seca"]),
-  mk("📅","¿Cuántos días tiene una semana?","7",["5","10"]),
-  mk("🌍","¿Cómo se llama el planeta donde vivimos?","Tierra",["Marte","Luna"]),
-  mk("🧼","¿Qué hacemos antes de comer?","lavarnos las manos",["saltar","dormir"]),
-  mk("🏫","¿En qué ciudad está tu colegio?","Torrejón de Ardoz",["Sevilla","Bilbao"]),
-  mk("🗺️","¿En qué comunidad está Torrejón de Ardoz?","Comunidad de Madrid",["Galicia","Andalucía"])
- ],
- ingles:[
-  ie("🐶","dog",["cat","bird"]),ie("🐱","cat",["dog","fish"]),
-  ie("🍎","apple",["banana","orange"]),ie("🔴","red",["blue","green"]),
-  ie("🔵","blue",["red","yellow"]),ie("3️⃣","three",["two","five"]),
-  ie("5️⃣","five",["four","nine"]),ie("☀️","sun",["moon","star"]),
-  ie("📖","book",["bag","pen"]),ie("👩","mum",["dad","sister"]),
-  mk("👋","¿Qué significa hello?","hola",["adiós","gracias"],"hello"),
-  mk("🌅","¿Qué significa good morning?","buenos días",["buenas noches","hasta luego"],"good morning")
- ]
+lengua:[
+mk("🏠","¿Qué letra falta en ca_a?","s",["z","c"],1),mk("☀️","¿Cuántas sílabas tiene sol?","1",["2","3"],1),mk("🐱","¿Qué palabra rima con gato?","pato",["luna","mesa"],1),mk("🏃","¿Cuál es una acción?","correr",["mesa","rojo"],1),mk("🐘","Lo contrario de grande es…","pequeño",["alto","gordo"],1),mk("🏙️","¿Cuál está bien escrito?","Madrid",["madrid","MAdrid"],1),
+mk("🦋","¿Cuántas sílabas tiene mariposa?","4",["3","5"],2),mk("🪟","¿Cuál está bien escrito?","ventana",["bentana","ventanna"],2),mk("✏️","El plural de lápiz es…","lápices",["lápizes","lápizs"],2),mk("👧","Las niñas ___ en el parque.","juegan",["juega","jugamos"],2),mk("📝","¿Qué signo ponemos al final de una pregunta?","?",[".",","],2),mk("⛺","¿Qué letra falta en ca_po?","m",["n","b"],2),
+mk("📚","Ordena para formar una frase: lee / Ana / un cuento","Ana lee un cuento",["Lee cuento Ana un","Un Ana cuento lee"],3),mk("🌳","¿Cuál es el diminutivo de árbol?","arbolito",["arbolón","árboles"],3),mk("👦","El niño y la niña ___ amigos.","son",["es","soy"],3),mk("🐦","¿Cuál está en plural?","los pájaros",["el pájaro","la pájara"],3),mk("🔤","¿Cuál va primero alfabéticamente?","casa",["mesa","silla"],3),mk("❗","¡Qué sorpresa! ¿Qué signo aparece?","exclamación",["coma","punto"],3)],
+medio:[
+mk("👁️","¿Con qué parte del cuerpo vemos?","con los ojos",["con los oídos","con la nariz"],1),mk("🐔","¿Qué animal pone huevos?","la gallina",["la vaca","el perro"],1),mk("🌻","¿Qué necesitan las plantas?","agua y luz",["chocolate","nada"],1),mk("🐟","¿Dónde vive un pez?","en el agua",["en un árbol","en una casa"],1),mk("🧼","¿Qué hacemos antes de comer?","lavarnos las manos",["saltar","dormir"],1),mk("🏫","¿En qué ciudad está tu colegio?","Torrejón de Ardoz",["Sevilla","Bilbao"],1),
+mk("🌿","¿Qué parte de la planta absorbe agua?","la raíz",["la flor","la hoja"],2),mk("🧊","El hielo es agua…","sólida",["líquida","gaseosa"],2),mk("🌍","¿En qué planeta vivimos?","la Tierra",["Marte","la Luna"],2),mk("🗺️","Torrejón de Ardoz está en…","la Comunidad de Madrid",["Galicia","Andalucía"],2),mk("🧹","¿Qué tarea ayuda a limpiar el suelo?","barrer",["regar","dibujar"],2,"","casa"),mk("🍽️","¿Qué tarea hacemos después de comer?","recoger la mesa",["hacer la cama","regar las plantas"],2,"","casa"),
+mk("🏡","¿Qué material deja pasar la luz en una ventana?","vidrio",["ladrillo","madera"],3,"","casa"),mk("🧱","¿Qué material se usa para construir paredes?","ladrillo",["lana","papel"],3,"","casa"),mk("🏠","¿Qué parte protege la casa de la lluvia?","el tejado",["el suelo","la puerta"],3,"","casa"),mk("🧺","¿Dónde ponemos la ropa sucia?","en el cesto",["en el horno","en la bañera"],3,"","casa"),mk("♻️","¿Qué es mejor para cuidar el entorno?","separar residuos",["tirarlos al suelo","dejar el grifo abierto"],3),mk("🚪","¿Para qué sirve una puerta?","para entrar y salir",["para cocinar","para dormir"],3,"","casa")],
+ingles:[
+ie("🐶","perro","dog",["cat","bird"],1),ie("🐱","gato","cat",["dog","fish"],1),ie("🍎","manzana","apple",["banana","orange"],1),ie("🔴","rojo","red",["blue","green"],1),ie("📖","libro","book",["bag","pen"],1),mk("👋","¿Qué significa hello?","hola",["adiós","gracias"],1,"hello"),
+ie("🍳","cocina","kitchen",["bedroom","bathroom"],2,"house"),ie("🛏️","dormitorio","bedroom",["kitchen","garden"],2,"house"),ie("🛁","baño","bathroom",["living room","dining room"],2,"house"),ie("🛋️","salón","living room",["bathroom","bedroom"],2,"house"),ie("🍽️","comedor","dining room",["kitchen","garden"],2,"house"),mk("🏠","Where do you live?","I live in a house",["I am seven","I like apples"],2,"I live in a house","house"),
+mk("🏢","¿Cómo dices que vives en un piso?","I live in a flat",["I live in a tent","I live in a school"],3,"I live in a flat","house"),ie("🧱","ladrillo","brick",["wood","glass"],3,"house"),ie("🪵","madera","wood",["brick","stone"],3,"house"),ie("🪟","vidrio","glass",["wood","brick"],3,"house"),mk("🧹","¿Qué significa sweep the floor?","barrer el suelo",["hacer la cama","lavar los platos"],3,"sweep the floor","house"),mk("🛏️","¿Qué significa make the bed?","hacer la cama",["poner la mesa","regar las plantas"],3,"make the bed","house")]
 };
 
-const FIX=[
- mk("🔺","¿Cuántos lados tiene un triángulo?","3",["4","5"]),
- mk("🟦","¿Cuántos lados tiene un cuadrado?","4",["3","6"]),
- mk("🕒","La aguja corta está en el 3 y la larga en el 12. ¿Qué hora es?","las 3 en punto",["las 12 en punto","las 3 y media"])
-];
-function nums(r){const s=new Set();while(s.size<2){const v=r+[1,2,10,-1,-2,-10,3][rnd(0,6)];if(v>=0&&v!==r)s.add(v)}return[...s].map(String)}
-function M(){
- const t=rnd(0,8);let q,r,e;
- if(t===0){const a=rnd(3,30),b=rnd(2,20);q=a+" + "+b+" = ?";r=a+b;e="➕"}
- else if(t===1){const a=rnd(10,40),b=rnd(2,a-1);q=a+" − "+b+" = ?";r=a-b;e="➖"}
- else if(t===2){const n=rnd(2,10);q="¿Cuál es el doble de "+n+"?";r=2*n;e="👯"}
- else if(t===3){const n=2*rnd(1,10);q="¿Cuál es la mitad de "+n+"?";r=n/2;e="🍕"}
- else if(t===4){const n=[2,5,10][rnd(0,2)],k=rnd(1,10);q=n+" × "+k+" = ?";r=n*k;e="✖️"}
- else if(t===5){const n=rnd(2,9);q="¿Cuántas decenas hay en "+n*10+"?";r=n;e="🔟"}
- else if(t===6){const s=[2,5,10][rnd(0,2)];q=[1,2,3,4].map(i=>i*s).join(", ")+", ?";r=5*s;e="🪜"}
- else return FIX[rnd(0,FIX.length-1)];
- return mk(e,q,String(r),nums(r));
-}
+// Contenidos complementarios de Ciencias Naturales, Ciencias Sociales e Inglés (1.º de Primaria)
+BANK.medio.push(
+  mk("🧍","¿Cuáles son las tres partes principales del cuerpo?","cabeza, tronco y extremidades",["ojos, nariz y boca","mano, pie y pelo"],1,"","cuerpo"),
+  mk("🧠","¿Dónde está el cerebro?","en la cabeza",["en la mano","en el pie"],1,"","cuerpo"),
+  mk("🦵","Los brazos y las piernas son…","extremidades",["sentidos","órganos"],1,"","cuerpo"),
+  mk("👃","¿Para qué sirve la nariz?","para oler",["para ver","para oír"],1,"","cuerpo"),
+  mk("👂","¿Para qué sirven los oídos?","para oír",["para saborear","para tocar"],1,"","cuerpo"),
+  mk("👅","¿Con qué órgano saboreamos?","con la lengua",["con los ojos","con los codos"],1,"","cuerpo"),
+  mk("🦴","¿Qué nos permiten hacer las articulaciones?","movernos",["oler","saborear"],2,"","cuerpo"),
+  mk("💪","¿Cuál es una articulación?","el codo",["el pelo","la uña"],2,"","cuerpo"),
+  mk("🦵","¿Cuál es una articulación de la pierna?","la rodilla",["la nariz","la oreja"],2,"","cuerpo"),
+  mk("🖐️","¿Qué articulación une la mano con el brazo?","la muñeca",["el tobillo","la cadera"],2,"","cuerpo"),
+  mk("🦶","¿Qué articulación está junto al pie?","el tobillo",["el hombro","el cuello"],2,"","cuerpo"),
+  mk("😊","Si sonrío y quiero jugar, probablemente estoy…","contenta",["enfadada","asustada"],2,"","emociones"),
+  mk("😢","Si lloro porque echo algo de menos, estoy…","triste",["contenta","sorprendida"],2,"","emociones"),
+  mk("😠","Cuando estoy enfadada, ¿qué puedo hacer?","respirar y pedir ayuda",["pegar","romper cosas"],3,"","emociones"),
+  mk("😨","Si algo me da miedo, puedo…","contárselo a una persona adulta",["esconderlo siempre","gritar a los demás"],3,"","emociones"),
+  mk("👨‍👩‍👧‍👦","Las personas que nos cuidan y forman nuestro hogar son…","la familia",["el mobiliario","las plantas"],1,"","familia"),
+  mk("🏫","¿Dónde aprendemos con profesoras y compañeros?","en el colegio",["en el hospital","en el mercado"],1,"","colegio"),
+  mk("📚","¿Dónde encontramos muchos libros en el colegio?","en la biblioteca",["en el comedor","en el gimnasio"],2,"","colegio"),
+  mk("🍽️","¿Dónde comemos en el colegio?","en el comedor",["en la biblioteca","en el patio"],2,"","colegio"),
+  mk("⚽","¿Dónde jugamos durante el recreo?","en el patio",["en secretaría","en la cocina"],2,"","colegio"),
+  mk("👩‍🏫","¿Qué profesión ayuda a aprender en el colegio?","profesora",["piloto","dentista"],2,"","profesiones"),
+  mk("🧑‍⚕️","¿Quién cuida nuestra salud?","la médica o el médico",["la carpintera o el carpintero","la piloto o el piloto"],2,"","profesiones"),
+  mk("🦷","¿Quién cuida nuestros dientes?","la dentista o el dentista",["la profesora o el profesor","la piloto o el piloto"],3,"","profesiones"),
+  mk("🤝","Cada persona hace cosas diferentes. ¿Qué es correcto?","respetarnos y ayudarnos",["burlarnos","decir que siempre somos mejores"],3,"","convivencia")
+);
+BANK.ingles.push(
+  ie("🧍","cabeza","head",["hand","leg"],1,"body"),ie("👃","nariz","nose",["mouth","ear"],1,"body"),
+  ie("👂","oreja","ear",["eye","arm"],1,"body"),ie("👄","boca","mouth",["foot","hand"],1,"body"),
+  ie("🖐️","mano","hand",["head","knee"],1,"body"),ie("🦶","pie","foot",["arm","eye"],1,"body"),
+  ie("💪","brazo","arm",["leg","ear"],1,"body"),ie("🦵","pierna","leg",["arm","nose"],1,"body"),
+  ie("🦴","hombro","shoulder",["knee","ankle"],2,"body"),ie("💪","codo","elbow",["wrist","hip"],2,"body"),
+  ie("🖐️","muñeca","wrist",["ankle","shoulder"],2,"body"),ie("🦵","rodilla","knee",["elbow","ear"],2,"body"),
+  ie("🦶","tobillo","ankle",["wrist","mouth"],2,"body"),
+  mk("👀","Two little eyes to…","look around",["hear a sound","smell a flower"],2,"Two little eyes to look around","body"),
+  mk("👂","Two little ears to…","hear a sound",["look around","taste food"],2,"Two little ears to hear a sound","body"),
+  ie("😊","contenta","happy",["sad","angry"],1,"feelings"),ie("😢","triste","sad",["happy","sleepy"],1,"feelings"),
+  ie("😠","enfadada","angry",["hungry","happy"],2,"feelings"),ie("😴","soñolienta","sleepy",["angry","sad"],2,"feelings"),
+  mk("😊","How are you feeling?","I am happy",["I am seven","This is my mum"],2,"I am happy","feelings"),
+  ie("👩","mamá","mum",["dad","sister"],1,"family"),ie("👨","papá","dad",["brother","grandpa"],1,"family"),
+  ie("👧","hermana","sister",["brother","mum"],1,"family"),ie("👦","hermano","brother",["sister","dad"],1,"family"),
+  ie("👵","abuela","grandma",["mum","sister"],2,"family"),ie("👴","abuelo","grandpa",["dad","brother"],2,"family"),
+  mk("👩","Who’s this?","This is my mum",["I am six","This is the gym"],2,"This is my mum","family"),
+  mk("👴","Who’s this?","This is my grandpa",["This is my classroom","I live in a flat"],2,"This is my grandpa","family"),
+  mk("🎂","How old are you?","I am six years old",["My name is Ana","I am happy"],2,"I am six years old","identity"),
+  mk("👦","How old is he?","He is seven years old",["She is seven years old","He is my brother"],3,"He is seven years old","identity"),
+  mk("👧","How old is she?","She is six years old",["He is six years old","She is my sister"],3,"She is six years old","identity"),
+  mk("👋","What’s your name?","My name is Ana",["I am six years old","This is my school"],1,"My name is Ana","identity"),
+  ie("🏫","colegio","school",["house","hospital"],1,"school"),ie("📚","biblioteca","library",["playground","gym"],2,"school"),
+  ie("⚽","patio","playground",["classroom","canteen"],2,"school"),ie("🍽️","comedor","canteen",["library","gym"],2,"school"),
+  ie("🏀","gimnasio","gym",["classroom","playground"],2,"school"),ie("🧑‍🎨","aula de arte","art room",["music room","science room"],3,"school"),
+  mk("📚","Completa: This is the…","library",["doctor","brother"],2,"This is the library","school"),
+  mk("🏫","Completa: This is the…","classroom",["grandpa","kitchen"],2,"This is the classroom","school"),
+  ie("👩‍🏫","profesora","teacher",["doctor","pilot"],2,"jobs"),ie("🧑‍⚕️","médica","doctor",["teacher","carpenter"],2,"jobs"),
+  ie("🦷","dentista","dentist",["pilot","teacher"],2,"jobs"),ie("✈️","piloto","pilot",["dentist","carpenter"],3,"jobs"),
+  ie("🔨","carpintera","carpenter",["doctor","teacher"],3,"jobs"),
+  mk("👩‍🏫","What do you do?","I’m a teacher",["I’m a classroom","I’m seven"],3,"I am a teacher","jobs")
+);
 
-let st=null;
-const load=()=>{try{return JSON.parse(localStorage.getItem("islas"))||{}}catch(x){return{}}};
-const save=(a,n)=>{try{const d=load();if(!d[a]||d[a]<n)d[a]=n;localStorage.setItem("islas",JSON.stringify(d))}catch(x){}};
-
-function home(){
- st=null;const d=load();
- const tot=Object.values(d).reduce((a,b)=>a+b,0);
- $("#app").innerHTML=
- '<h1>Las cuatro islas</h1><p class="sub">Elige una isla y responde 5 preguntas. ¡Consigue todas las estrellas!</p>'+
- '<div class="total">⭐ '+tot+' / 20</div><div class="map">'+
- Object.entries(AREAS).map(([k,a])=>'<button class="isl" data-a="'+k+'" style="--c:'+a.c+'"><span class="em">'+a.e+'</span><span>'+a.n+'<small>'+a.d+'</small></span><span>'+"⭐".repeat(d[k]||0)+"☆".repeat(5-(d[k]||0))+'</span></button>').join("")+'</div>';
- document.querySelectorAll(".isl").forEach(b=>b.onclick=()=>start(b.dataset.a));
-}
-
-function start(a){
- const qs=a==="mates"?Array.from({length:5},M):shuf(BANK[a]).slice(0,5);
- st={a,qs,i:0,s:0};show();
-}
-
-function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=.8;speechSynthesis.speak(u)}catch(x){}}
-
-function show(){
- const A=AREAS[st.a],q=st.qs[st.i];
- const opts=shuf([{t:q.r,ok:1},...q.w.map(t=>({t,ok:0}))]);
- $("#app").innerHTML=
- '<div style="--c:'+A.c+'"><div class="top"><button class="back" id="bk">← Islas</button><div class="dots" aria-label="Pregunta '+(st.i+1)+' de 5">'+
- st.qs.map((_,i)=>'<i class="'+(i<st.i?"on":"")+(i===st.i?" cur":"")+'"></i>').join("")+'</div></div>'+
- '<div class="q"><div class="em">'+q.e+'</div><h2>'+q.q+'</h2>'+(q.say?'<button class="snd" id="sn">🔊 Escuchar</button>':'')+'</div>'+
- '<div class="opts">'+opts.map((o,i)=>'<button class="opt" data-ok="'+o.ok+'">'+o.t+'</button>').join("")+'</div>'+
- '<div id="fb" aria-live="polite"></div></div>';
- $("#bk").onclick=home;
- if(q.say)$("#sn").onclick=()=>speak(q.say);
- document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(b,q));
-}
-
-function answer(b,q){
- const ok=b.dataset.ok==="1";
- document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("ok")});
- if(!ok)b.classList.add("no");else st.s++;
- const last=st.i===4;
- $("#fb").innerHTML=(ok?["¡Muy bien!","¡Perfecto!","¡Genial!"][rnd(0,2)]+" 🎉":"Casi. La respuesta es: "+q.r)+
- '<br><button class="next" id="nx">'+(last?"Ver mis estrellas":"Siguiente")+'</button>';
- $("#nx").focus();
- $("#nx").onclick=()=>{if(last)end();else{st.i++;show()}};
-}
-
-function end(){
- const A=AREAS[st.a],s=st.s;save(st.a,s);
- const m=s===5?"¡Perfecto! Eres una campeona":s>=3?"¡Muy bien! Casi lo tienes":"¡Buen intento! Con práctica saldrá mejor";
- $("#app").innerHTML='<div class="end" style="--c:'+A.c+'"><h1>'+A.e+' '+A.n+'</h1><div class="stars" aria-label="'+s+' estrellas de 5">'+"⭐".repeat(s)+"☆".repeat(5-s)+'</div><p class="sub">'+m+'</p>'+
- '<button class="next" id="ag">Jugar otra vez</button><button class="back" id="hm">Volver a las islas</button></div>';
- $("#ag").onclick=()=>start(st.a);$("#hm").onclick=home;
-}
+const FIX=[mk("🔺","¿Cuántos lados tiene un triángulo?","3",["4","5"],1),mk("🟦","¿Cuántos lados tiene un cuadrado?","4",["3","6"],1),mk("🕒","La aguja corta está en el 3 y la larga en el 12. ¿Qué hora es?","las 3 en punto",["las 12","las 3 y media"],2),mk("💶","Tienes 1 € y te dan otro. ¿Cuánto tienes?","2 €",["1 €","3 €"],2),mk("📏","¿Qué usamos para medir una mesa?","una regla",["un reloj","un vaso"],2)];
+function nums(r){const s=new Set();while(s.size<2){const v=r+[1,2,5,-1,-2,-5,10][rnd(0,6)];if(v>=0&&v!==r)s.add(v)}return [...s].map(String)}
+function M(n){if(Math.random()<.25)return {...FIX[rnd(0,FIX.length-1)],n};let q,r,e;if(n===1){if(Math.random()<.6){let a=rnd(1,10),b=rnd(1,10);q=`${a} + ${b} = ?`;r=a+b;e="➕"}else{let a=rnd(5,20),b=rnd(1,a);q=`${a} − ${b} = ?`;r=a-b;e="➖"}}else if(n===2){const t=rnd(0,4);if(t===0){let a=rnd(10,50),b=rnd(2,30);q=`${a} + ${b} = ?`;r=a+b;e="➕"}else if(t===1){let a=rnd(20,70),b=rnd(2,a);q=`${a} − ${b} = ?`;r=a-b;e="➖"}else if(t===2){let x=rnd(2,10);q=`¿Cuál es el doble de ${x}?`;r=x*2;e="👯"}else if(t===3){let x=2*rnd(1,10);q=`¿Cuál es la mitad de ${x}?`;r=x/2;e="🍕"}else{let s=[2,5,10][rnd(0,2)];q=`${s}, ${s*2}, ${s*3}, ${s*4}, ?`;r=s*5;e="🪜"}}else{const t=rnd(0,3);if(t===0){let a=rnd(20,70),b=rnd(10,29);q=`${a} + ${b} = ?`;r=a+b;e="➕"}else if(t===1){let a=rnd(40,99),b=rnd(10,a-1);q=`${a} − ${b} = ?`;r=a-b;e="➖"}else if(t===2){let x=[2,5,10][rnd(0,2)],y=rnd(1,10);q=`${x} × ${y} = ?`;r=x*y;e="✖️"}else{let tens=rnd(2,9);q=`¿Cuántas decenas hay en ${tens*10}?`;r=tens;e="🔟"}}return mk(e,q,String(r),nums(r),n)}
+const empty=()=>({best:{},xp:0,streak:0,last:"",games:0,perfect:0,topics:{},badges:[]});
+function load(){try{return Object.assign(empty(),JSON.parse(localStorage.getItem("islas2")||"{}"))}catch(e){return empty()}}
+function save(d){localStorage.setItem("islas2",JSON.stringify(d))}
+function day(){return new Date().toISOString().slice(0,10)}
+function diffDays(a,b){return Math.round((new Date(b)-new Date(a))/86400000)}
+function unlocked(a,d){return d.xp>=AREAS[a].unlock}
+function levelFromXP(x){return x<10?1:x<25?2:3}
+const LEVELS={1:"Exploradora",2:"Aventurera",3:"Guardiana"};let st=null,chosen=0;
+function home(){st=null;const d=load(),stars=Object.values(d.best).reduce((a,b)=>a+b,0),lv=levelFromXP(d.xp),next=lv===1?10:lv===2?25:25,base=lv===1?0:lv===2?10:25,pct=lv===3?100:Math.round((d.xp-base)/(next-base)*100);$("#app").innerHTML=`<h1>Las cuatro islas</h1><p class="sub">Aprende jugando, gana estrellas y desbloquea nuevas aventuras.</p><div class="summary"><span class="pill">⭐ ${stars}/20</span><span class="pill">✨ ${d.xp} puntos</span><span class="pill">🔥 ${d.streak} días</span><button class="soft" id="tr">🏆 Trofeos</button></div><div class="panel"><b>Nivel ${lv}: ${LEVELS[lv]}</b><div class="bar" aria-label="Progreso de nivel"><span style="width:${pct}%"></span></div><small>${lv===3?"¡Nivel máximo conseguido!":`${next-d.xp} puntos para el siguiente nivel`}</small></div><div class="map">${Object.entries(AREAS).map(([k,a])=>{let open=unlocked(k,d),need=Math.max(0,a.unlock-d.xp);return `<button class="isl" data-a="${k}" style="--c:${a.c}" ${open?"":"disabled"}><span class="em">${open?a.e:"🔒"}</span><span>${a.n}<small>${a.d}</small></span><span>${"⭐".repeat(d.best[k]||0)}${"☆".repeat(5-(d.best[k]||0))}</span>${open?"":`<span class="lock">Faltan ${need} puntos</span>`}</button>`}).join("")}</div>`;document.querySelectorAll(".isl:not(:disabled)").forEach(b=>b.onclick=()=>choose(b.dataset.a));$("#tr").onclick=trophies}
+function choose(a){const d=load(),auto=levelFromXP(d.xp);chosen=auto;const A=AREAS[a];$("#app").innerHTML=`<div style="--c:${A.c}"><button class="back" id="bk">← Islas</button><div class="panel" style="text-align:center"><div class="em">${A.e}</div><h1>${A.n}</h1><p>Elige la dificultad. Recomendamos el nivel ${auto}.</p><div class="levelrow">${[1,2,3].map(n=>`<button class="level ${n===auto?"sel":""}" data-n="${n}">${n}. ${LEVELS[n]}</button>`).join("")}</div><button class="next" id="go">Empezar</button></div></div>`;$("#bk").onclick=home;document.querySelectorAll(".level").forEach(b=>b.onclick=()=>{chosen=+b.dataset.n;document.querySelectorAll(".level").forEach(x=>x.classList.toggle("sel",x===b))});$("#go").onclick=()=>start(a,chosen)}
+function start(a,n){let pool=a==="mates"?[]:BANK[a].filter(q=>q.n===n);if(pool.length<5&&a!=="mates")pool=BANK[a].filter(q=>Math.abs(q.n-n)<=1);const qs=a==="mates"?Array.from({length:5},()=>M(n)):shuf(pool).slice(0,5);st={a,n,qs,i:0,s:0,topics:{}};show()}
+function speak(t){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
+function show(){const A=AREAS[st.a],q=st.qs[st.i],opts=shuf([{t:q.r,ok:1},...q.w.map(t=>({t,ok:0}))]);$("#app").innerHTML=`<div style="--c:${A.c}"><div class="top"><button class="back" id="bk">← Islas</button><div class="dots" aria-label="Pregunta ${st.i+1} de 5">${st.qs.map((_,i)=>`<i class="${i<st.i?"on":""}${i===st.i?" cur":""}"></i>`).join("")}</div></div><div class="q"><span class="tag">Nivel ${st.n} · ${LEVELS[st.n]}</span><div class="em">${q.e}</div><h2>${q.q}</h2>${q.say?'<button class="snd" id="sn">🔊 Escuchar</button>':""}</div><div class="opts">${opts.map(o=>`<button class="opt" data-ok="${o.ok}">${o.t}</button>`).join("")}</div><div id="fb" aria-live="polite"></div></div>`;$("#bk").onclick=home;if(q.say)$("#sn").onclick=()=>speak(q.say);document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(b,q))}
+function answer(b,q){const ok=b.dataset.ok==="1";document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("ok")});if(ok){st.s++;st.topics[q.topic]=(st.topics[q.topic]||0)+1}else b.classList.add("no");const last=st.i===4;$("#fb").innerHTML=(ok?["¡Muy bien!","¡Perfecto!","¡Genial!"][rnd(0,2)]+" 🎉":"Casi. La respuesta es: "+q.r)+`<br><button class="next" id="nx">${last?"Ver mi premio":"Siguiente"}</button>`;$("#nx").focus();$("#nx").onclick=()=>last?end():(st.i++,show())}
+function end(){const d=load(),today=day(),old=d.best[st.a]||0;d.best[st.a]=Math.max(old,st.s);d.games++;if(st.s===5)d.perfect++;const gain=Math.max(1,st.s)+(st.s===5?2:0);d.xp+=gain;if(d.last!==today){d.streak=d.last&&diffDays(d.last,today)===1?d.streak+1:1;d.last=today}Object.entries(st.topics).forEach(([k,v])=>d.topics[k]=(d.topics[k]||0)+v);const checks=[['first','🌟','Primera aventura',d.games>=1],['perfect','👑','Cinco de cinco',d.perfect>=1],['streak3','🔥','Racha de 3 días',d.streak>=3],['house','🏠','Experta en la casa',(d.topics.house||0)>=8],['ten','💫','10 puntos',d.xp>=10],['all','🗺️','Todas las islas',Object.keys(d.best).length===4],['body','🧍','Experta en el cuerpo',(d.topics.body||0)+(d.topics.cuerpo||0)>=10],['family','👨‍👩‍👧‍👦','Experta en la familia',(d.topics.family||0)+(d.topics.familia||0)>=8],['school','🏫','Experta en el colegio',(d.topics.school||0)+(d.topics.colegio||0)>=8]];let fresh=[];checks.forEach(x=>{if(x[3]&&!d.badges.includes(x[0])){d.badges.push(x[0]);fresh.push(x)}});save(d);const A=AREAS[st.a],msg=st.s===5?"¡Perfecto! Eres una campeona":st.s>=3?"¡Muy bien! Sigue explorando":"¡Buen intento! Cada partida te hace aprender";$("#app").innerHTML=`<div class="end" style="--c:${A.c}"><h1>${A.e} ${A.n}</h1><div class="stars">${"⭐".repeat(st.s)}${"☆".repeat(5-st.s)}</div><p class="sub">${msg}</p><div class="notice">Has ganado ${gain} puntos ✨${st.s===5?" (incluye premio perfecto)":""}</div>${fresh.map(x=>`<div class="notice">¡Nuevo trofeo! ${x[1]} ${x[2]}</div>`).join("")}<button class="next" id="ag">Jugar otra vez</button> <button class="back" id="hm">Volver a las islas</button></div>`;$("#ag").onclick=()=>start(st.a,st.n);$("#hm").onclick=home}
+function trophies(){const d=load(),all=[['first','🌟','Primera aventura','Completa una partida'],['perfect','👑','Cinco de cinco','Acierta las 5 preguntas'],['streak3','🔥','Racha de 3 días','Juega tres días seguidos'],['house','🏠','Experta en la casa','Acierta 8 preguntas de la casa'],['ten','💫','10 puntos','Consigue 10 puntos'],['all','🗺️','Todas las islas','Juega en las cuatro islas'],['body','🧍','Experta en el cuerpo','Acierta 10 preguntas del cuerpo'],['family','👨‍👩‍👧‍👦','Experta en la familia','Acierta 8 preguntas de la familia'],['school','🏫','Experta en el colegio','Acierta 8 preguntas del colegio']];$("#app").innerHTML=`<button class="back" id="bk">← Islas</button><h1>Mis trofeos</h1><p class="sub">Los premios celebran el esfuerzo. Nunca se pierden.</p><div class="badgegrid">${all.map(x=>`<div class="badge ${d.badges.includes(x[0])?"":"off"}"><span class="em">${x[1]}</span><b>${x[2]}</b><small>${d.badges.includes(x[0])?"¡Conseguido!":x[3]}</small></div>`).join("")}</div><div class="panel"><b>Progreso guardado en este dispositivo</b><p>Partidas: ${d.games} · Perfectas: ${d.perfect} · Racha: ${d.streak}</p><button class="soft" id="reset">Reiniciar progreso</button></div>`;$("#bk").onclick=home;$("#reset").onclick=()=>{if(confirm("¿Seguro que quieres borrar estrellas y trofeos?")){localStorage.removeItem("islas2");home()}}}
 home();
-</script>
-</body>
-</html>
+</script></body></html>
