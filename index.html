@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Las cuatro islas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF6FF;--ink:#1B2A49;--card:#fff;--line:#BFD6EE;--ok:#17824A;--no:#C23550;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Andika",Verdana,"Trebuchet MS",sans-serif;line-height:1.5;min-height:100vh}
+main{max-width:560px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:2rem;line-height:1.15;margin:8px 0 4px}
+h2{font-size:1.5rem;line-height:1.3;margin:8px 0}
+p{margin:0 0 12px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+.sub{font-size:1.1rem;margin-bottom:18px}
+.total{display:inline-block;background:var(--card);border:3px solid var(--line);border-radius:999px;padding:2px 14px;font-weight:700;margin-bottom:16px}
+.map{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.isl{background:var(--card);border:4px solid var(--c);padding:18px 10px 14px;text-align:center;font-weight:700;font-size:1.05rem;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:transform .15s}
+.isl:nth-child(1){border-radius:46% 54% 50% 50%/55% 45% 55% 45%}
+.isl:nth-child(2){border-radius:54% 46% 45% 55%/48% 56% 44% 52%}
+.isl:nth-child(3){border-radius:50% 50% 55% 45%/45% 55% 45% 55%}
+.isl:nth-child(4){border-radius:45% 55% 48% 52%/54% 46% 54% 46%}
+.isl:hover{transform:scale(1.04)}
+.isl .em{font-size:3rem;line-height:1;background:var(--c);border-radius:50%;width:74px;height:74px;display:grid;place-items:center}
+.isl small{display:block;font-weight:400;font-size:.9rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.back{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}
+.dots{display:flex;gap:6px}
+.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--c)}
+.dots i.cur{outline:3px solid var(--ink)}
+.q{background:var(--card);border:4px solid var(--c);border-radius:28px;padding:18px;text-align:center;margin-bottom:16px}
+.q .em{font-size:4rem;line-height:1.1}
+.snd{background:var(--bg);border:3px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:700;margin-top:4px}
+.opts{display:grid;gap:12px}
+.opt{background:var(--card);border:4px solid var(--line);border-radius:20px;min-height:60px;padding:10px 16px;font-size:1.35rem;font-weight:700}
+.opt:hover:not(:disabled){border-color:var(--c)}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.no{background:var(--no);border-color:var(--no);color:#fff}
+.opt:disabled{cursor:default}
+#fb{margin-top:16px;font-size:1.2rem;font-weight:700;min-height:2.4em}
+.next{background:var(--c);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.2rem;font-weight:700;margin-top:8px}
+.end{text-align:center}
+.stars{font-size:3rem;letter-spacing:4px;margin:12px 0}
+.end .next{margin:6px}
+.end .back{margin:6px;font-size:1.1rem;padding:10px 22px}
+@media (prefers-reduced-motion:reduce){.isl{transition:none}.isl:hover{transform:none}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const mk=(e,q,r,w,say)=>({e,q,r,w,say});
+const EN="¿Cómo se dice en inglés?";
+const ie=(e,r,w)=>mk(e,EN,r,w,r);
+
+const AREAS={
+ lengua:{n:"Lengua",e:"✏️",c:"#E8467C",d:"letras y palabras"},
+ mates:{n:"Matemáticas",e:"🔢",c:"#3B6EF5",d:"números y formas"},
+ medio:{n:"Conocimiento del medio",e:"🌱",c:"#22A765",d:"naturaleza y entorno"},
+ ingles:{n:"Inglés",e:"🇬🇧",c:"#F2A413",d:"English"}
+};
+
+const BANK={
+ lengua:[
+  mk("🏠","¿Qué letra falta en ca_a?","s",["z","c"]),
+  mk("🦋","¿Cuántas sílabas tiene mariposa?","4",["3","5"]),
+  mk("🏙️","¿Cuál está bien escrito?","Madrid",["madrid","MAdrid"]),
+  mk("🪟","¿Cuál está bien escrito?","ventana",["bentana","ventanna"]),
+  mk("📝","Falta un signo al final: Me gusta el chocolate_","punto",["interrogación","coma"]),
+  mk("⛺","¿Qué letra falta en ca_po?","m",["n","b"]),
+  mk("🏃","¿Cuál de estas palabras es una acción?","correr",["mesa","rojo"]),
+  mk("🐘","Lo contrario de grande es…","pequeño",["alto","gordo"]),
+  mk("☀️","¿Cuántas sílabas tiene sol?","1",["2","3"]),
+  mk("🐱","¿Qué palabra rima con gato?","pato",["luna","mesa"]),
+  mk("✏️","El plural de lápiz es…","lápices",["lápizes","lápizs"]),
+  mk("👧","Las niñas ___ en el parque.","juegan",["juega","jugamos"])
+ ],
+ medio:[
+  mk("👀","¿Cuántos sentidos tenemos?","5",["3","7"]),
+  mk("👁️","¿Con qué parte del cuerpo vemos?","con los ojos",["con los oídos","con la nariz"]),
+  mk("🐔","¿Cuál de estos animales pone huevos?","la gallina",["la vaca","el perro"]),
+  mk("🍂","¿En qué estación caen las hojas de los árboles?","otoño",["verano","primavera"]),
+  mk("🌻","¿Qué necesitan las plantas para crecer?","agua y luz",["solo chocolate","nada"]),
+  mk("🌿","¿Qué parte de la planta absorbe el agua?","la raíz",["la flor","la hoja"]),
+  mk("🚒","¿Qué oficio apaga los incendios?","bombero",["panadero","pintor"]),
+  mk("🧊","Un cubito de hielo es agua…","sólida",["líquida","gaseosa"]),
+  mk("🐟","¿Dónde vive un pez?","en el agua",["en un árbol","en una cueva seca"]),
+  mk("📅","¿Cuántos días tiene una semana?","7",["5","10"]),
+  mk("🌍","¿Cómo se llama el planeta donde vivimos?","Tierra",["Marte","Luna"]),
+  mk("🧼","¿Qué hacemos antes de comer?","lavarnos las manos",["saltar","dormir"]),
+  mk("🏫","¿En qué ciudad está tu colegio?","Torrejón de Ardoz",["Sevilla","Bilbao"]),
+  mk("🗺️","¿En qué comunidad está Torrejón de Ardoz?","Comunidad de Madrid",["Galicia","Andalucía"])
+ ],
+ ingles:[
+  ie("🐶","dog",["cat","bird"]),ie("🐱","cat",["dog","fish"]),
+  ie("🍎","apple",["banana","orange"]),ie("🔴","red",["blue","green"]),
+  ie("🔵","blue",["red","yellow"]),ie("3️⃣","three",["two","five"]),
+  ie("5️⃣","five",["four","nine"]),ie("☀️","sun",["moon","star"]),
+  ie("📖","book",["bag","pen"]),ie("👩","mum",["dad","sister"]),
+  mk("👋","¿Qué significa hello?","hola",["adiós","gracias"],"hello"),
+  mk("🌅","¿Qué significa good morning?","buenos días",["buenas noches","hasta luego"],"good morning")
+ ]
+};
+
+const FIX=[
+ mk("🔺","¿Cuántos lados tiene un triángulo?","3",["4","5"]),
+ mk("🟦","¿Cuántos lados tiene un cuadrado?","4",["3","6"]),
+ mk("🕒","La aguja corta está en el 3 y la larga en el 12. ¿Qué hora es?","las 3 en punto",["las 12 en punto","las 3 y media"])
+];
+function nums(r){const s=new Set();while(s.size<2){const v=r+[1,2,10,-1,-2,-10,3][rnd(0,6)];if(v>=0&&v!==r)s.add(v)}return[...s].map(String)}
+function M(){
+ const t=rnd(0,8);let q,r,e;
+ if(t===0){const a=rnd(3,30),b=rnd(2,20);q=a+" + "+b+" = ?";r=a+b;e="➕"}
+ else if(t===1){const a=rnd(10,40),b=rnd(2,a-1);q=a+" − "+b+" = ?";r=a-b;e="➖"}
+ else if(t===2){const n=rnd(2,10);q="¿Cuál es el doble de "+n+"?";r=2*n;e="👯"}
+ else if(t===3){const n=2*rnd(1,10);q="¿Cuál es la mitad de "+n+"?";r=n/2;e="🍕"}
+ else if(t===4){const n=[2,5,10][rnd(0,2)],k=rnd(1,10);q=n+" × "+k+" = ?";r=n*k;e="✖️"}
+ else if(t===5){const n=rnd(2,9);q="¿Cuántas decenas hay en "+n*10+"?";r=n;e="🔟"}
+ else if(t===6){const s=[2,5,10][rnd(0,2)];q=[1,2,3,4].map(i=>i*s).join(", ")+", ?";r=5*s;e="🪜"}
+ else return FIX[rnd(0,FIX.length-1)];
+ return mk(e,q,String(r),nums(r));
+}
+
+let st=null;
+const load=()=>{try{return JSON.parse(localStorage.getItem("islas"))||{}}catch(x){return{}}};
+const save=(a,n)=>{try{const d=load();if(!d[a]||d[a]<n)d[a]=n;localStorage.setItem("islas",JSON.stringify(d))}catch(x){}};
+
+function home(){
+ st=null;const d=load();
+ const tot=Object.values(d).reduce((a,b)=>a+b,0);
+ $("#app").innerHTML=
+ '<h1>Las cuatro islas</h1><p class="sub">Elige una isla y responde 5 preguntas. ¡Consigue todas las estrellas!</p>'+
+ '<div class="total">⭐ '+tot+' / 20</div><div class="map">'+
+ Object.entries(AREAS).map(([k,a])=>'<button class="isl" data-a="'+k+'" style="--c:'+a.c+'"><span class="em">'+a.e+'</span><span>'+a.n+'<small>'+a.d+'</small></span><span>'+"⭐".repeat(d[k]||0)+"☆".repeat(5-(d[k]||0))+'</span></button>').join("")+'</div>';
+ document.querySelectorAll(".isl").forEach(b=>b.onclick=()=>start(b.dataset.a));
+}
+
+function start(a){
+ const qs=a==="mates"?Array.from({length:5},M):shuf(BANK[a]).slice(0,5);
+ st={a,qs,i:0,s:0};show();
+}
+
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=.8;speechSynthesis.speak(u)}catch(x){}}
+
+function show(){
+ const A=AREAS[st.a],q=st.qs[st.i];
+ const opts=shuf([{t:q.r,ok:1},...q.w.map(t=>({t,ok:0}))]);
+ $("#app").innerHTML=
+ '<div style="--c:'+A.c+'"><div class="top"><button class="back" id="bk">← Islas</button><div class="dots" aria-label="Pregunta '+(st.i+1)+' de 5">'+
+ st.qs.map((_,i)=>'<i class="'+(i<st.i?"on":"")+(i===st.i?" cur":"")+'"></i>').join("")+'</div></div>'+
+ '<div class="q"><div class="em">'+q.e+'</div><h2>'+q.q+'</h2>'+(q.say?'<button class="snd" id="sn">🔊 Escuchar</button>':'')+'</div>'+
+ '<div class="opts">'+opts.map((o,i)=>'<button class="opt" data-ok="'+o.ok+'">'+o.t+'</button>').join("")+'</div>'+
+ '<div id="fb" aria-live="polite"></div></div>';
+ $("#bk").onclick=home;
+ if(q.say)$("#sn").onclick=()=>speak(q.say);
+ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(b,q));
+}
+
+function answer(b,q){
+ const ok=b.dataset.ok==="1";
+ document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.classList.add("ok")});
+ if(!ok)b.classList.add("no");else st.s++;
+ const last=st.i===4;
+ $("#fb").innerHTML=(ok?["¡Muy bien!","¡Perfecto!","¡Genial!"][rnd(0,2)]+" 🎉":"Casi. La respuesta es: "+q.r)+
+ '<br><button class="next" id="nx">'+(last?"Ver mis estrellas":"Siguiente")+'</button>';
+ $("#nx").focus();
+ $("#nx").onclick=()=>{if(last)end();else{st.i++;show()}};
+}
+
+function end(){
+ const A=AREAS[st.a],s=st.s;save(st.a,s);
+ const m=s===5?"¡Perfecto! Eres una campeona":s>=3?"¡Muy bien! Casi lo tienes":"¡Buen intento! Con práctica saldrá mejor";
+ $("#app").innerHTML='<div class="end" style="--c:'+A.c+'"><h1>'+A.e+' '+A.n+'</h1><div class="stars" aria-label="'+s+' estrellas de 5">'+"⭐".repeat(s)+"☆".repeat(5-s)+'</div><p class="sub">'+m+'</p>'+
+ '<button class="next" id="ag">Jugar otra vez</button><button class="back" id="hm">Volver a las islas</button></div>';
+ $("#ag").onclick=()=>start(st.a);$("#hm").onclick=home;
+}
+home();
+</script>
+</body>
+</html>
