@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Las cinco islas</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E👸%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 :root{--bg:#EAF6FF;--ink:#1B2A49;--card:#fff;--line:#BFD6EE;--ok:#17824A;--no:#C23550;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0F1B33;--ink:#EAF2FF;--card:#1A2A4A;--line:#3A5078}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Andika",Verdana,"Trebuchet MS",sans-serif;line-height:1.5;min-height:100vh}main{max-width:560px;margin:0 auto;padding:20px 16px 40px}h1{font-size:2rem;line-height:1.15;margin:8px 0 4px}h2{font-size:1.5rem;line-height:1.3;margin:8px 0}p{margin:0 0 12px}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}.sub{font-size:1.1rem;margin-bottom:18px}.summary{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.pill{display:inline-block;background:var(--card);border:3px solid var(--line);border-radius:999px;padding:2px 14px;font-weight:700}.panel{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px 14px;margin-bottom:16px}.map{display:grid;grid-template-columns:1fr 1fr;gap:14px}.isl{background:var(--card);border:4px solid var(--c);padding:18px 10px 14px;text-align:center;font-weight:700;font-size:1.05rem;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:transform .15s}.isl:nth-child(1){border-radius:46% 54% 50% 50%/55% 45% 55% 45%}.isl:nth-child(2){border-radius:54% 46% 45% 55%/48% 56% 44% 52%}.isl:nth-child(3){border-radius:50% 50% 55% 45%/45% 55% 45% 55%}.isl:nth-child(4){border-radius:45% 55% 48% 52%/54% 46% 54% 46%}.isl:nth-child(5){grid-column:1/-1;min-height:140px;border-radius:46% 54% 48% 52%/50% 46% 54% 50%}.units{display:grid;gap:8px;margin:10px 0}.units .level{text-align:left;border-radius:16px;width:100%}.isl:hover:not(:disabled){transform:scale(1.04)}.isl:disabled{opacity:.62;cursor:default}.isl .em{font-size:3rem;line-height:1;background:var(--c);border-radius:50%;width:74px;height:74px;display:grid;place-items:center}.isl small{display:block;font-weight:400;font-size:.9rem}.lock{font-size:.78rem}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.back,.soft{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}.dots{display:flex;gap:6px}.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--c)}.dots i.cur{outline:3px solid var(--ink)}.q{background:var(--card);border:4px solid var(--c);border-radius:28px;padding:18px;text-align:center;margin-bottom:16px}.q .em{font-size:4rem;line-height:1.1}.tag{display:inline-block;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700}.snd{background:var(--bg);border:3px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:700;margin-top:4px}.opts{display:grid;gap:12px}.opt{background:var(--card);border:4px solid var(--line);border-radius:20px;min-height:60px;padding:10px 16px;font-size:1.35rem;font-weight:700}.opt:hover:not(:disabled){border-color:var(--c)}.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{background:var(--no);border-color:var(--no);color:#fff}.opt:disabled{cursor:default}#fb{margin-top:16px;font-size:1.2rem;font-weight:700;min-height:2.4em}.next{background:var(--c);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.2rem;font-weight:700;margin-top:8px}.end{text-align:center}.stars{font-size:3rem;letter-spacing:4px;margin:12px 0}.end .next{margin:6px}.end .back{margin:6px;font-size:1.1rem;padding:10px 22px}.levelrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}.level{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700}.level.sel{background:var(--ink);color:var(--card)}.level:disabled{opacity:.45;cursor:default}.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:7px 0}.bar span{display:block;height:100%;background:#F2A413}.notice{background:var(--card);border:3px solid var(--line);border-radius:20px;padding:10px 14px;margin:12px 0;font-weight:700}.notice.pr{border-color:#E8467C}.badgegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.badge{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px;text-align:center}.badge.off{opacity:.55;filter:grayscale(1)}.badge .em{font-size:2.6rem}.badge sup{font-size:1.2rem}.badge b,.badge small{display:block}@media (prefers-reduced-motion:reduce){.isl{transition:none}.isl:hover{transform:none}}@media(max-width:420px){.map{gap:10px}.isl{min-height:165px;padding:14px 7px}.summary{gap:5px}.pill{font-size:.86rem;padding:2px 9px}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Andika",Verdana,"Trebuchet MS",sans-serif;line-height:1.5;min-height:100vh}main{max-width:560px;margin:0 auto;padding:20px 16px 40px}h1{font-size:2rem;line-height:1.15;margin:8px 0 4px}h2{font-size:1.5rem;line-height:1.3;margin:8px 0}p{margin:0 0 12px}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}.sub{font-size:1.1rem;margin-bottom:18px}.summary{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.pill{display:inline-block;background:var(--card);border:3px solid var(--line);border-radius:999px;padding:2px 14px;font-weight:700}.panel{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px 14px;margin-bottom:16px}.map{display:grid;grid-template-columns:1fr 1fr;gap:14px}.isl{background:var(--card);border:4px solid var(--c);padding:18px 10px 14px;text-align:center;font-weight:700;font-size:1.05rem;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:transform .15s}.isl:nth-child(1){border-radius:46% 54% 50% 50%/55% 45% 55% 45%}.isl:nth-child(2){border-radius:54% 46% 45% 55%/48% 56% 44% 52%}.isl:nth-child(3){border-radius:50% 50% 55% 45%/45% 55% 45% 55%}.isl:nth-child(4){border-radius:45% 55% 48% 52%/54% 46% 54% 46%}.isl:nth-child(5){grid-column:1/-1;min-height:140px;border-radius:46% 54% 48% 52%/50% 46% 54% 50%}.units{display:grid;gap:8px;margin:10px 0}.units .level{text-align:left;border-radius:16px;width:100%}a.soft{display:inline-block;text-decoration:none;color:inherit;margin-top:6px}.badge svg,.notice svg{display:block;margin:0 auto}.isl:hover:not(:disabled){transform:scale(1.04)}.isl:disabled{opacity:.62;cursor:default}.isl .em{font-size:3rem;line-height:1;background:var(--c);border-radius:50%;width:74px;height:74px;display:grid;place-items:center}.isl small{display:block;font-weight:400;font-size:.9rem}.lock{font-size:.78rem}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.back,.soft{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700}.dots{display:flex;gap:6px}.dots i{width:16px;height:16px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--c)}.dots i.cur{outline:3px solid var(--ink)}.q{background:var(--card);border:4px solid var(--c);border-radius:28px;padding:18px;text-align:center;margin-bottom:16px}.q .em{font-size:4rem;line-height:1.1}.tag{display:inline-block;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700}.snd{background:var(--bg);border:3px solid var(--line);border-radius:999px;padding:6px 16px;font-weight:700;margin-top:4px}.opts{display:grid;gap:12px}.opt{background:var(--card);border:4px solid var(--line);border-radius:20px;min-height:60px;padding:10px 16px;font-size:1.35rem;font-weight:700}.opt:hover:not(:disabled){border-color:var(--c)}.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{background:var(--no);border-color:var(--no);color:#fff}.opt:disabled{cursor:default}#fb{margin-top:16px;font-size:1.2rem;font-weight:700;min-height:2.4em}.next{background:var(--c);color:#fff;border:0;border-radius:999px;padding:12px 28px;font-size:1.2rem;font-weight:700;margin-top:8px}.end{text-align:center}.stars{font-size:3rem;letter-spacing:4px;margin:12px 0}.end .next{margin:6px}.end .back{margin:6px;font-size:1.1rem;padding:10px 22px}.levelrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}.level{background:var(--card);border:3px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700}.level.sel{background:var(--ink);color:var(--card)}.level:disabled{opacity:.45;cursor:default}.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:7px 0}.bar span{display:block;height:100%;background:#F2A413}.notice{background:var(--card);border:3px solid var(--line);border-radius:20px;padding:10px 14px;margin:12px 0;font-weight:700}.notice.pr{border-color:#E8467C}.badgegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.badge{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:12px;text-align:center}.badge.off{opacity:.55;filter:grayscale(1)}.badge .em{font-size:2.6rem}.badge sup{font-size:1.2rem}.badge b,.badge small{display:block}@media (prefers-reduced-motion:reduce){.isl{transition:none}.isl:hover{transform:none}}@media(max-width:420px){.map{gap:10px}.isl{min-height:165px;padding:14px 7px}.summary{gap:5px}.pill{font-size:.86rem;padding:2px 9px}}
 </style></head><body><main id="app"></main><script>
 const $=s=>document.querySelector(s),rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,pick=a=>a[rnd(0,a.length-1)];
 const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
@@ -21,9 +22,9 @@ const oth=(arr,ex)=>shuf(arr.filter(x=>!ex.includes(x))).slice(0,2);
 const AREAS={
  lengua:{n:"Lengua",e:"✏️",c:"#e8467c",d:"Un paso más",unlock:0},
  mates:{n:"Matemáticas",e:"🔢",c:"#3b6ef5",d:"números y cuentas",unlock:0},
- natural:{n:"Natural Science",e:"🌿",c:"#22a765",d:"cuerpo, plantas y animales",unlock:2},
- social:{n:"Social Science",e:"🏘️",c:"#a05ab0",d:"familia, casa y barrio",unlock:4},
- ingles:{n:"English",e:"🇬🇧",c:"#f2a413",d:"Be Curious",unlock:6}
+ natural:{n:"Natural Science",e:"🌿",c:"#22a765",d:"cuerpo, plantas y animales",unlock:0},
+ social:{n:"Social Science",e:"🏘️",c:"#a05ab0",d:"familia, casa y barrio",unlock:0},
+ ingles:{n:"English",e:"🇬🇧",c:"#f2a413",d:"Be Curious",unlock:0}
 };
 const UN={
  lengua:["La Paloma","Los piratas en el Polo","Un tesoro bajo el mar","El puerto de los Esqueletos","En busca del pez de plata","El rescate de Pata Palo","La cigarra y la hormiga","El libro de la selva","El mago Gaspar"],
@@ -53,7 +54,7 @@ const GU={
 8:()=>pick([()=>{const a=rnd(3,9),b=rnd(10-a,9);return N("➕",`${a} + ${b} = ?`,a+b)},()=>{const a=10*rnd(1,2)+rnd(5,9),b=rnd(10-a%10,9);return N("➕",`${a} + ${b} = ?`,a+b)},()=>{const a=rnd(6,9),b=rnd(10-a,9);return N("🍪",`Tengo ${a} galletas y me dan ${b}. ¿Cuántas tengo ahora?`,a+b)}])(),
 9:()=>pick([()=>clock(0),()=>clock(1),()=>{const a=rnd(1,4);return N("💶",`Tengo ${a} ${a>1?"monedas":"moneda"} de 1 € y una moneda de 2 €. ¿Cuántos euros tengo?`,a+2)},()=>{const p=rnd(1,4);return N("🍦",`Un helado cuesta ${p} € y pago con 5 €. ¿Cuánto me devuelven?`,5-p)},()=>mk("📅","¿Qué día va después del martes?","miércoles",["lunes","jueves"],1,"","mat"),()=>mk("📆","¿Cuántos días tiene una semana?","7",["5","10"],1,"","mat")])()
 };
-const M=(n,u)=>GU[u||rnd(1,9)]();
+const M=(n,u)=>GU[u||pick([...AL])]();
 
 /* ===== LENGUA ===== */
 const PW=s=>s.split(" ").map(x=>{const m=x.match(/^(\P{L}+)(.+)$/u),y=m[2].split("-");return{e:m[1],y,w:y.join("")}});
@@ -299,7 +300,7 @@ const VE=V(`1|👦|niño|boy
 9|🚜|tractor|tractor
 9|🦆|pato|duck`);
 const GV=V=>(n,u)=>{
- const L=u?V.filter(x=>x.u===u):V,it=pick(L),o=shuf(V.filter(x=>x.en!==it.en&&x.es!==it.es&&(L.length<4||x.u===it.u))).slice(0,2),k=n===1?0:n===2?rnd(0,1):rnd(0,2);
+ const L=u?V.filter(x=>x.u===u):V.filter(x=>AL.has(x.u)),it=pick(L),o=shuf(V.filter(x=>x.en!==it.en&&x.es!==it.es&&(L.length<4||x.u===it.u))).slice(0,2),k=n===1?0:n===2?rnd(0,1):rnd(0,2);
  if(k===0)return mk(it.e,"What is it?",it.en,o.map(x=>x.en),1,it.en,"voc");
  if(k===1)return mk("🔤",`¿Cómo se dice «${it.es}» en inglés?`,it.en,o.map(x=>x.en),1,it.en,"voc");
  return mk("🔊",`¿Qué significa «${it.en}»?`,it.es,o.map(x=>x.es),1,it.en,"voc");
@@ -384,7 +385,7 @@ function draw(a,n,u){
   if(a==="mates")q=M(n,u);
   else if(Math.random()<GP||(u&&a==="lengua"))q=GEN[a](n,u);
   else{
-   const k=t<5?0:t<9?1:2,en=x=>a==="lengua"?Math.ceil(x.n*3/5):x.n,f=BANK[a].filter(x=>(!u||x.u===u)&&Math.abs(en(x)-n)<=k),g=f.filter(x=>!seen.has(x.q+x.r));
+   const k=t<5?0:t<9?1:2,en=x=>a==="lengua"?Math.ceil(x.n*3/5):x.n,f=BANK[a].filter(x=>(u?x.u===u:(!x.u||AL.has(x.u)))&&Math.abs(en(x)-n)<=k),g=f.filter(x=>!seen.has(x.q+x.r));
    if(!g.length&&t<13)continue;
    q=g.length?pick(g):f.length?pick(f):GEN[a](n,u);
   }
@@ -395,40 +396,105 @@ function draw(a,n,u){
 
 /* ===== PRINCESAS ===== */
 const PR=[
- ["luna","🌙","Luna","Completa tu primera partida",d=>d.games>=1],
- ["estrella","⭐","Estrella","Acierta las 5 preguntas",d=>d.perfect>=1],
- ["alba","🌅","Alba","Juega 3 días seguidos",d=>d.streak>=3],
- ["flor","🌸","Flor","10 aciertos en Natural o Social Science",d=>(d.areaOk.natural||0)+(d.areaOk.social||0)>=10],
- ["coral","🐚","Coral","Juega en las 5 islas",d=>Object.keys(d.best).length===5],
- ["perla","🦪","Perla","3 partidas perfectas",d=>d.perfect>=3],
- ["rubi","❤️","Rubí","Llega al nivel 3",d=>lvOf(d.xp)>=3],
- ["lila","🦄","Lila","10 aciertos en Inglés",d=>(d.areaOk.ingles||0)>=10],
- ["zafiro","💎","Zafiro","Consigue 40 puntos",d=>d.xp>=40],
- ["nube","☁️","Nube","Juega 7 días seguidos",d=>d.streak>=7],
- ["sol","☀️","Sol","Llega al nivel 4",d=>lvOf(d.xp)>=4],
- ["brisa","🍃","Brisa","Juega 20 partidas",d=>d.games>=20],
- ["reina","👑","Reina Sabia","Llega al nivel 5",d=>lvOf(d.xp)>=5]
+ ["luna","👠","Cenicienta","Completa tu primera partida",d=>d.games>=1,"#E8C25A","#7EC8F0","#F6D1B5"],
+ ["estrella","🍎","Blancanieves","Acierta las 5 preguntas",d=>d.perfect>=1,"#2B2024","#F2C94C","#FBE0CF"],
+ ["alba","🌹","Bella Durmiente","Juega 3 días seguidos",d=>d.streak>=3,"#F0B84A","#F58FB5","#F6D1B5"],
+ ["flor","🌼","Rapunzel","10 aciertos en Natural o Social Science",d=>(d.areaOk.natural||0)+(d.areaOk.social||0)>=10,"#F5D76E","#B48AE6","#F6D1B5",1],
+ ["coral","🐚","La Sirenita","Juega en las 5 islas",d=>Object.keys(d.best).length===5,"#E4572E","#3FC1A5","#F6D1B5",1],
+ ["perla","❄️","Princesa Nieve","3 partidas perfectas",d=>d.perfect>=3,"#EDEFF7","#9CD3F5","#FBE0CF"],
+ ["rubi","❤️","Princesa Rubí","Llega al nivel 3",d=>lvOf(d.xp)>=3,"#3A1F14","#D63B5B","#8D5A3B"],
+ ["lila","🦄","Princesa Lila","10 aciertos en Inglés",d=>(d.areaOk.ingles||0)>=10,"#6B3FA0","#C79BF2","#C58C62"],
+ ["zafiro","💎","Princesa Zafiro","Consigue 40 puntos",d=>d.xp>=40,"#1B2A49","#3B6EF5","#E9B791"],
+ ["nube","☁️","Princesa Nube","Juega 7 días seguidos",d=>d.streak>=7,"#B7A6E8","#EAF2FF","#F6D1B5"],
+ ["sol","☀️","Princesa Sol","Llega al nivel 4",d=>lvOf(d.xp)>=4,"#B5521F","#F5A623","#C58C62"],
+ ["brisa","🍃","Princesa Brisa","Juega 20 partidas",d=>d.games>=20,"#5E3B1E","#4FB477","#E9B791"],
+ ["reina","👑","Reina Sabia","Llega al nivel 5",d=>lvOf(d.xp)>=5,"#8A8A99","#7B3FA0","#F6D1B5"]
 ];
-const empty=()=>({best:{},xp:0,streak:0,last:"",games:0,perfect:0,topics:{},areaOk:{},badges:[]});
+const prin=p=>{const[,ac,nm,,,h,v,sk,lg]=p;return `<svg viewBox="0 0 100 124" width="92" height="114" role="img" aria-label="${nm}"><ellipse cx="50" cy="${lg?62:44}" rx="27" ry="${lg?50:30}" fill="${h}"/><path d="M36 66Q50 58 64 66L88 116Q50 126 12 116Z" fill="${v}"/><path d="M36 66Q50 74 64 66L62 74Q50 80 38 74Z" fill="#fff" opacity=".45"/><circle cx="50" cy="42" r="18" fill="${sk}"/><path d="M31 40Q34 16 50 18Q66 16 69 40Q58 28 50 30Q42 28 31 40Z" fill="${h}"/><circle cx="43" cy="44" r="2.2" fill="#1B2A49"/><circle cx="57" cy="44" r="2.2" fill="#1B2A49"/><circle cx="38" cy="50" r="3.2" fill="#FF8FA3" opacity=".6"/><circle cx="62" cy="50" r="3.2" fill="#FF8FA3" opacity=".6"/><path d="M44 51Q50 57 56 51" stroke="#B23A48" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M36 26L39 12L45 20L50 9L55 20L61 12L64 26Z" fill="#F5C542" stroke="#D99A1E" stroke-width="1.2"/><text x="70" y="104" font-size="26">${ac}</text><text x="6" y="24" font-size="14">✨</text></svg>`};
+const empty=()=>({best:{},xp:0,streak:0,last:"",games:0,perfect:0,topics:{},areaOk:{},ub:{},badges:[]});
 function load(){try{return Object.assign(empty(),JSON.parse(localStorage.getItem("islas3")||"{}"))}catch(e){return empty()}}
 function save(d){try{localStorage.setItem("islas3",JSON.stringify(d))}catch(e){}}
-const day=()=>new Date().toISOString().slice(0,10),diffDays=(a,b)=>Math.round((new Date(b)-new Date(a))/86400000),unlocked=(a,d)=>d.xp>=AREAS[a].unlock;
+const day=()=>dk(),diffDays=(a,b)=>Math.round((new Date(b)-new Date(a))/86400000),unlocked=(a,d)=>d.xp>=AREAS[a].unlock;
 let st=null,chosen=1;
+
+/* ===== LÍMITE DIARIO Y UNIDADES ===== */
+const LIM_MIN=20,HORA=6,TK="islas3t",LIM=LIM_MIN*60;
+const dk=()=>{const t=new Date(Date.now()-HORA*36e5),p=n=>String(n).padStart(2,"0");return t.getFullYear()+"-"+p(t.getMonth()+1)+"-"+p(t.getDate())};
+function tget(){try{const x=JSON.parse(localStorage.getItem(TK));if(x&&x.k===dk())return x}catch(e){}return{k:dk(),s:0}}
+const tput=()=>{try{localStorage.setItem(TK,JSON.stringify(tm))}catch(e){}};
+let tm=tget(),lastAct=Date.now(),locked=false,tk=0,AL=new Set();
+["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,()=>{lastAct=Date.now()},{passive:true}));
+addEventListener("pagehide",tput);
+const rem=()=>Math.max(0,Math.ceil((LIM-tm.s)/60));
+const unitOpen=(d,a,k)=>k===1||(d.ub[a+(k-1)]||0)>=3;
+function lockScreen(){
+ locked=true;st=null;const d=new Date(),r=new Date(d.getFullYear(),d.getMonth(),d.getDate(),HORA,0,0);if(d>=r)r.setDate(r.getDate()+1);
+ const tot=Math.ceil((r-d)/6e4),h=Math.floor(tot/60),m=tot%60;
+ $("#app").innerHTML=`<div class="end"><div style="font-size:4rem">🌙</div><h1>¡Hasta mañana!</h1><p class="sub">Hoy ya has jugado tus ${LIM_MIN} minutos. Descansa: las princesas te esperan mañana a las ${HORA}:00.</p><div class="notice">Podrás volver a jugar dentro de ${h} h ${m} min</div></div>`;
+}
+setInterval(()=>{
+ tk++;
+ if(tm.k!==dk()){tm={k:dk(),s:0};tput();if(locked){locked=false;home();return}}
+ const x=tget();if(x.s>tm.s)tm=x;
+ if(!locked&&document.visibilityState==="visible"&&Date.now()-lastAct<6e4){tm.s++;tput()}
+ if(!locked&&tm.s>=LIM)lockScreen();else if(locked&&tk%30===0)lockScreen();
+ const e=$("#rem");if(e)e.textContent="⏳ "+rem()+" min";
+},1000);
+
+/* ===== VÍDEOS DE CLASE ===== */
+const YT=id=>"https://www.youtube.com/watch?v="+id;
+const VID=[
+ ["🌿","Natural Science · Tema 1: el cuerpo humano","Libro de Naturales, pp. 10–17",[
+  ["Principales partes del cuerpo: cabeza, tronco y extremidades (pp. 10–11)","EIFPz_Rh_Lc"],
+  ["Parts Of The Body · Caitie’s Classroom Sing-Along Show","T5S8rO3AmWI"],
+  ["Body parts song for kids · This is me · ELF Learning","QkHQ0CYwjaI"],
+  ["Head, shoulders, knees and toes · DJ Raphi","S2eRNzsAZg4"],
+  ["Joints · las articulaciones (pp. 12–13)","8XsSArQ-fZA"],
+  ["Joints of the body song · English for kids","jT53D-Izz6I"],
+  ["Two little eyes to look around · karaoke (pp. 14–15)","ohhYrgyemdo"],
+  ["Feelings and emotions song for kids (pp. 16–17)","eMOnyPxE_w8"]]],
+ ["🏘️","Social Science · Tema 1: la familia y la escuela","Libro de Sociales, pp. 10–17",[
+  ["Who’s this? My family · Family members song · Treehouse Kids Club (pp. 10–11)","0FFCt88rwlc"],
+  ["Places at school · English for kids · vocabulario (pp. 12–13)","ipQ9AFnwPyI"],
+  ["School life · Places at school song · «This is the…»","zW0ygCs5kHc"],
+  ["Ampliación: School (v1) · Kids vocabulary","2i4CbCINjWA"],
+  ["Jobs song for kids · What do you do? · Occupations (pp. 14–15)","ckKQclquAXU"],
+  ["What do you see? Song · Jobs · Dream English Kids","0ExoYRVy8-0"],
+  ["Cuento: I’m the best · read aloud (pp. 16–17)","x_Cbiyow1Jo"]]],
+ ["🏠","Social Science · Tema 2: la casa","Libro de Sociales, pp. 26–35",[
+  ["Different types of homes · Mr Puell · «I live in a…» (pp. 26, 27 y 35)","s2eC9gTKVa8"],
+  ["Learn rooms of the house song · Matt (pp. 28–29)","IjnlkdZvYTE"],
+  ["Rooms in the house · Steve and Maggie","mV-TnrvUJ9Q"],
+  ["All about houses · Types of homes for kids · materiales (p. 30)","H4DlKNGpgnA"],
+  ["Ampliación: tipos de casas","eCNade4GFpY"],
+  ["Household chores · vocabulary for kids · tareas domésticas (pp. 32–33)","kQQtfYaSDHM"]]],
+ ["🇬🇧","Lengua Inglesa · Tema 1: la familia","Clase de inglés",[
+  ["Who’s this? My family · Family members song · Treehouse Kids Club","0FFCt88rwlc"],
+  ["This is my family · Fun ESL song · Florentis Learning","T02Q3hMGlOI"],
+  ["Ampliación: Family members for kids · family tree and quiz · Brain Snax","2mt4AJy1Fuk"],
+  ["How old are you? · song for kids","Z8FyLcCFaXU"],
+  ["How old is he? How old is she? · age song · rap","6PsjGTXd7Hk"],
+  ["What’s your name? · Noodle and Pals · Super Simple Songs","zMdq9jSaNLg"]]]
+];
+function videos(){
+ $("#app").innerHTML=`<button class="back" id="bk">← Islas</button><h1>📺 Vídeos de clase</h1>${VID.map(g=>`<div class="panel"><h2>${g[0]} ${g[1]}</h2><small>${g[2]}</small>${g[3].map(v=>`<div class="notice">${v[0]}<br><a class="soft" href="${YT(v[1])}" target="_blank" rel="noopener noreferrer">▶ Ver vídeo</a></div>`).join("")}</div>`).join("")}`;
+ $("#bk").onclick=home;
+}
 
 function home(){
  st=null;const d=load(),L=lvOf(d.xp),stars=Object.values(d.best).reduce((a,b)=>a+b,0),base=TH[L-1],nx=TH[L],pct=L===5?100:Math.round((d.xp-base)/(nx-base)*100),np=PR.filter(p=>d.badges.includes(p[0])).length;
- $("#app").innerHTML=`<h1>Las cinco islas</h1><p class="sub">Aprende jugando, sube de nivel y reúne a todas las princesas del reino.</p><div class="summary"><span class="pill">⭐ ${stars}/25</span><span class="pill">✨ ${d.xp} puntos</span><span class="pill">🔥 ${d.streak} días</span><button class="soft" id="tr">👸 Mi reino ${np}/${PR.length}</button></div><div class="panel"><b>Nivel ${L}: ${LV[L-1]}</b><div class="bar" aria-label="Progreso de nivel"><span style="width:${pct}%"></span></div><small>${L===5?"¡Eres la reina sabia del reino!":`${nx-d.xp} puntos para el nivel ${L+1}`}</small></div><div class="map">${Object.entries(AREAS).map(([k,a])=>{const open=unlocked(k,d),need=Math.max(0,a.unlock-d.xp);return `<button class="isl" data-a="${k}" style="--c:${a.c}" ${open?"":"disabled"}><span class="em">${open?a.e:"🔒"}</span><span>${a.n}<small>${a.d}</small></span><span>${"⭐".repeat(d.best[k]||0)}${"☆".repeat(5-(d.best[k]||0))}</span>${open?"":`<span class="lock">Faltan ${need} puntos</span>`}</button>`}).join("")}</div>`;
- document.querySelectorAll(".isl:not(:disabled)").forEach(b=>b.onclick=()=>choose(b.dataset.a));$("#tr").onclick=reino;
+ $("#app").innerHTML=`<h1>Las cinco islas</h1><p class="sub">Aprende jugando, sube de nivel y reúne a todas las princesas del reino.</p><div class="summary"><span class="pill">⭐ ${stars}/25</span><span class="pill">✨ ${d.xp} puntos</span><span class="pill">🔥 ${d.streak} días</span><span class="pill" id="rem">⏳ ${rem()} min</span><button class="soft" id="tr">👸 Mi reino ${np}/${PR.length}</button></div><div class="panel"><b>Nivel ${L}: ${LV[L-1]}</b><div class="bar" aria-label="Progreso de nivel"><span style="width:${pct}%"></span></div><small>${L===5?"¡Eres la reina sabia del reino!":`${nx-d.xp} puntos para el nivel ${L+1}`}</small></div><div class="map">${Object.entries(AREAS).map(([k,a])=>{const open=unlocked(k,d),need=Math.max(0,a.unlock-d.xp);return `<button class="isl" data-a="${k}" style="--c:${a.c}" ${open?"":"disabled"}><span class="em">${open?a.e:"🔒"}</span><span>${a.n}<small>${a.d}</small></span><span>${"⭐".repeat(d.best[k]||0)}${"☆".repeat(5-(d.best[k]||0))}</span>${open?"":`<span class="lock">Faltan ${need} puntos</span>`}</button>`}).join("")}</div><button class="soft" id="vd" style="width:100%;margin-top:14px;font-size:1.1rem;padding:12px">📺 Vídeos de clase</button>`;
+ document.querySelectorAll(".isl:not(:disabled)").forEach(b=>b.onclick=()=>choose(b.dataset.a));$("#tr").onclick=reino;$("#vd").onclick=videos;
 }
 function choose(a){
- const L=lvOf(load().xp),A=AREAS[a];let dif=[1,1,2,2,3][L-1],u=0;
- $("#app").innerHTML=`<div style="--c:${A.c}"><button class="back" id="bk">← Islas</button><div class="panel" style="text-align:center"><div style="font-size:3rem">${A.e}</div><h1>${A.n}</h1><p>Elige la unidad de tu libro y la dificultad.</p><div class="units"><button class="level sel" data-u="0">⭐ Todas las unidades</button>${UN[a].map((t,i)=>`<button class="level" data-u="${i+1}">${i+1}. ${t}</button>`).join("")}</div><div class="levelrow">${DF.map((x,i)=>`<button class="level ${dif===i+1?"sel":""}" data-d="${i+1}">${x}</button>`).join("")}</div><button class="next" id="go">Empezar</button></div></div>`;
+ const D0=load(),L=lvOf(D0.xp),A=AREAS[a];let dif=[1,1,2,2,3][L-1],u=0;
+ $("#app").innerHTML=`<div style="--c:${A.c}"><button class="back" id="bk">← Islas</button><div class="panel" style="text-align:center"><div style="font-size:3rem">${A.e}</div><h1>${A.n}</h1><p>Elige la unidad de tu libro y la dificultad. Consigue 3 ⭐ en una unidad para abrir la siguiente.</p><div class="units"><button class="level sel" data-u="0">⭐ Todas las unidades</button>${UN[a].map((t,i)=>{const k=i+1,op=unitOpen(D0,a,k),b=D0.ub[a+k]||0;return `<button class="level" data-u="${k}" ${op?"":"disabled"}>${op?"":"🔒 "}${k}. ${t}${b?" "+"⭐".repeat(b):""}</button>`}).join("")}</div><div class="levelrow">${DF.map((x,i)=>`<button class="level ${dif===i+1?"sel":""}" data-d="${i+1}">${x}</button>`).join("")}</div><button class="next" id="go">Empezar</button></div></div>`;
  $("#bk").onclick=home;
  document.querySelectorAll("[data-u]").forEach(b=>b.onclick=()=>{u=+b.dataset.u;document.querySelectorAll("[data-u]").forEach(x=>x.classList.toggle("sel",x===b))});
  document.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{dif=+b.dataset.d;document.querySelectorAll("[data-d]").forEach(x=>x.classList.toggle("sel",x===b))});
  $("#go").onclick=()=>start(a,dif,u);
 }
-function start(a,n,u){st={a,n,u,qs:Array.from({length:5},()=>draw(a,n,u)),i:0,s:0,topics:{}};show()}
+function start(a,n,u){const dd=load();AL=new Set(UN[a].map((_,i)=>i+1).filter(k=>unitOpen(dd,a,k)));st={a,n,u,qs:Array.from({length:5},()=>draw(a,n,u)),i:0,s:0,topics:{}};show()}
 function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
 function show(){
  const A=AREAS[st.a],q=st.qs[st.i],opts=shuf([{t:q.r,ok:1},...q.w.map(t=>({t,ok:0}))]);
@@ -449,17 +515,17 @@ function end(){
  const gain=Math.max(1,st.s)+(st.s===5?2:0)+(st.s>=3?st.n-1:0);d.xp+=gain;
  if(d.last!==today){d.streak=d.last&&diffDays(d.last,today)===1?d.streak+1:1;d.last=today}
  Object.entries(st.topics).forEach(([k,v])=>d.topics[k]=(d.topics[k]||0)+v);
- d.areaOk[st.a]=(d.areaOk[st.a]||0)+st.s;
+ d.areaOk[st.a]=(d.areaOk[st.a]||0)+st.s;let nu=null;if(st.u){const k=st.a+st.u,old=d.ub[k]||0;d.ub[k]=Math.max(old,st.s);if(st.s>=3&&old<3&&st.u<UN[st.a].length)nu=UN[st.a][st.u]}
  const fresh=PR.filter(p=>!d.badges.includes(p[0])&&p[4](d));fresh.forEach(p=>d.badges.push(p[0]));save(d);
  const A=AREAS[st.a],L1=lvOf(d.xp),msg=st.s===5?"¡Perfecto! Eres una campeona":st.s>=3?"¡Muy bien! Sigue explorando":"¡Buen intento! Cada partida te hace aprender";
- $("#app").innerHTML=`<div class="end" style="--c:${A.c}"><h1>${A.e} ${A.n}</h1><div class="stars">${"⭐".repeat(st.s)}${"☆".repeat(5-st.s)}</div><p class="sub">${msg}</p><div class="notice">Has ganado ${gain} puntos ✨</div>${L1>L0?`<div class="notice">¡Subes al nivel ${L1}: ${LV[L1-1]}! 🎊</div>`:""}${fresh.map(p=>`<div class="notice pr">👸${p[1]} ¡Nueva princesa! <b>${p[2]}</b> se une a tu reino</div>`).join("")}<button class="next" id="ag">Jugar otra vez</button> <button class="back" id="hm">Volver a las islas</button></div>`;
+ $("#app").innerHTML=`<div class="end" style="--c:${A.c}"><h1>${A.e} ${A.n}</h1><div class="stars">${"⭐".repeat(st.s)}${"☆".repeat(5-st.s)}</div><p class="sub">${msg}</p><div class="notice">Has ganado ${gain} puntos ✨</div>${nu?`<div class="notice">🔓 ¡Nueva unidad desbloqueada: ${nu}!</div>`:""}${L1>L0?`<div class="notice">¡Subes al nivel ${L1}: ${LV[L1-1]}! 🎊</div>`:""}${fresh.map(p=>`<div class="notice pr">${prin(p)}<br>¡Nueva princesa! <b>${p[2]}</b> se une a tu reino</div>`).join("")}<button class="next" id="ag">Jugar otra vez</button> <button class="back" id="hm">Volver a las islas</button></div>`;
  $("#ag").onclick=()=>start(st.a,st.n,st.u);$("#hm").onclick=home;
 }
 function reino(){
  const d=load();
- $("#app").innerHTML=`<button class="back" id="bk">← Islas</button><h1>Mi reino</h1><p class="sub">Cada princesa llega al reino cuando consigues un reto. ¡Reúnelas a todas!</p><div class="badgegrid">${PR.map(p=>{const on=d.badges.includes(p[0]);return `<div class="badge ${on?"":"off"}"><span class="em">${on?"👸":"❔"}<sup>${on?p[1]:""}</sup></span><b>${on?p[2]:"Princesa misteriosa"}</b><small>${on?"¡Conseguida!":p[3]}</small></div>`}).join("")}</div><div class="panel"><b>Progreso guardado en este dispositivo</b><p>Partidas: ${d.games} · Perfectas: ${d.perfect} · Racha: ${d.streak}</p><button class="soft" id="reset">Reiniciar progreso</button></div>`;
+ $("#app").innerHTML=`<button class="back" id="bk">← Islas</button><h1>Mi reino</h1><p class="sub">Cada princesa llega al reino cuando consigues un reto. ¡Reúnelas a todas!</p><div class="badgegrid">${PR.map(p=>{const on=d.badges.includes(p[0]);return `<div class="badge ${on?"":"off"}">${on?prin(p):'<span class="em">❔</span>'}<b>${on?p[2]:"Princesa misteriosa"}</b><small>${on?"¡Conseguida!":p[3]}</small></div>`}).join("")}</div><div class="panel"><b>Progreso guardado en este dispositivo</b><p>Partidas: ${d.games} · Perfectas: ${d.perfect} · Racha: ${d.streak}</p><button class="soft" id="reset">Reiniciar progreso</button></div>`;
  $("#bk").onclick=home;
  $("#reset").onclick=()=>{if(confirm("¿Seguro que quieres borrar estrellas y princesas?")){try{localStorage.removeItem("islas3")}catch(e){}home()}};
 }
-home();
+tm.s>=LIM?lockScreen():home();
 </script></body></html>
