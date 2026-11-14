@@ -422,22 +422,23 @@ const LIM_MIN=20,HORA=6,TK="islas3t",LIM=LIM_MIN*60;
 const dk=()=>{const t=new Date(Date.now()-HORA*36e5),p=n=>String(n).padStart(2,"0");return t.getFullYear()+"-"+p(t.getMonth()+1)+"-"+p(t.getDate())};
 function tget(){try{const x=JSON.parse(localStorage.getItem(TK));if(x&&x.k===dk())return x}catch(e){}return{k:dk(),s:0}}
 const tput=()=>{try{localStorage.setItem(TK,JSON.stringify(tm))}catch(e){}};
-let tm=tget(),lastAct=Date.now(),locked=false,tk=0,AL=new Set();
+let tm=tget(),lastAct=Date.now(),locked=false,inVid=false,tk=0,AL=new Set();
 ["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,()=>{lastAct=Date.now()},{passive:true}));
 addEventListener("pagehide",tput);
 const rem=()=>Math.max(0,Math.ceil((LIM-tm.s)/60));
 const unitOpen=(d,a,k)=>k===1||(d.ub[a+(k-1)]||0)>=3;
 function lockScreen(){
- locked=true;st=null;const d=new Date(),r=new Date(d.getFullYear(),d.getMonth(),d.getDate(),HORA,0,0);if(d>=r)r.setDate(r.getDate()+1);
+ locked=true;inVid=false;st=null;const d=new Date(),r=new Date(d.getFullYear(),d.getMonth(),d.getDate(),HORA,0,0);if(d>=r)r.setDate(r.getDate()+1);
  const tot=Math.ceil((r-d)/6e4),h=Math.floor(tot/60),m=tot%60;
- $("#app").innerHTML=`<div class="end"><div style="font-size:4rem">🌙</div><h1>¡Hasta mañana!</h1><p class="sub">Hoy ya has jugado tus ${LIM_MIN} minutos. Descansa: las princesas te esperan mañana a las ${HORA}:00.</p><div class="notice">Podrás volver a jugar dentro de ${h} h ${m} min</div></div>`;
+ $("#app").innerHTML=`<div class="end"><div style="font-size:4rem">🌙</div><h1>¡Hasta mañana!</h1><p class="sub">Hoy ya has jugado tus ${LIM_MIN} minutos en las islas. Las princesas te esperan mañana a las ${HORA}:00.</p><div class="notice">Podrás volver a las islas dentro de ${h} h ${m} min</div><button class="next" id="vd2" style="--c:#3b6ef5">📺 Vídeos de clase</button></div>`;
+ $("#vd2").onclick=videos;
 }
 setInterval(()=>{
  tk++;
- if(tm.k!==dk()){tm={k:dk(),s:0};tput();if(locked){locked=false;home();return}}
+ if(tm.k!==dk()){tm={k:dk(),s:0};tput();if(locked){locked=false;if(!inVid)home();return}}
  const x=tget();if(x.s>tm.s)tm=x;
- if(!locked&&document.visibilityState==="visible"&&Date.now()-lastAct<6e4){tm.s++;tput()}
- if(!locked&&tm.s>=LIM)lockScreen();else if(locked&&tk%30===0)lockScreen();
+ if(!locked&&document.visibilityState==="visible"&&!inVid&&Date.now()-lastAct<6e4){tm.s++;tput()}
+ if(!locked&&!inVid&&tm.s>=LIM)lockScreen();else if(locked&&!inVid&&tk%30===0)lockScreen();
  const e=$("#rem");if(e)e.textContent="⏳ "+rem()+" min";
 },1000);
 
@@ -476,12 +477,24 @@ const VID=[
   ["How old is he? How old is she? · age song · rap","6PsjGTXd7Hk"],
   ["What’s your name? · Noodle and Pals · Super Simple Songs","zMdq9jSaNLg"]]]
 ];
+const VK="islas3v",pad=n=>String(n).padStart(2,"0");
+const wk=()=>{const t=new Date(Date.now()-2*36e5);t.setDate(t.getDate()-(t.getDay()+6)%7);return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate())};
+function vget(){try{const x=JSON.parse(localStorage.getItem(VK));if(x&&x.w===wk())return x}catch(e){}return{w:wk(),ids:{}}}
+const vput=x=>{try{localStorage.setItem(VK,JSON.stringify(x))}catch(e){}};
 function videos(){
- $("#app").innerHTML=`<button class="back" id="bk">← Islas</button><h1>📺 Vídeos de clase</h1>${VID.map(g=>`<div class="panel"><h2>${g[0]} ${g[1]}</h2><small>${g[2]}</small>${g[3].map(v=>`<div class="notice">${v[0]}<br><a class="soft" href="${YT(v[1])}" target="_blank" rel="noopener noreferrer">▶ Ver vídeo</a></div>`).join("")}</div>`).join("")}`;
- $("#bk").onclick=home;
+ inVid=true;const w=vget();
+ $("#app").innerHTML=`<button class="back" id="bk">← ${locked?"Volver":"Islas"}</button><h1>📺 Vídeos de clase</h1>${VID.map((g,i)=>`<div class="panel"><h2>${g[0]} ${g[1]}</h2><small>${g[2]} · <b data-c="${i}">${g[3].filter(v=>w.ids[v[1]]).length}/${g[3].length} vistos</b></small>${g[3].map(v=>`<div class="notice">${v[0]}<br><a class="soft" data-v="${v[1]}" href="${YT(v[1])}" target="_blank" rel="noopener noreferrer">▶ Ver vídeo</a> <button class="soft" data-m="${v[1]}" aria-pressed="${!!w.ids[v[1]]}">${w.ids[v[1]]?"✅ Visto":"⬜ Sin ver"}</button></div>`).join("")}</div>`).join("")}`;
+ $("#bk").onclick=locked?lockScreen:home;
+ const mark=(id,on)=>{
+  const x=vget();if(on)x.ids[id]=1;else delete x.ids[id];vput(x);
+  document.querySelectorAll(`[data-m="${id}"]`).forEach(b=>{b.textContent=on?"✅ Visto":"⬜ Sin ver";b.setAttribute("aria-pressed",on)});
+  VID.forEach((g,i)=>{const c=document.querySelector(`[data-c="${i}"]`);if(c)c.textContent=g[3].filter(v=>x.ids[v[1]]).length+"/"+g[3].length+" vistos"});
+ };
+ document.querySelectorAll("[data-v]").forEach(a=>a.onclick=()=>mark(a.dataset.v,true));
+ document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>mark(b.dataset.m,b.getAttribute("aria-pressed")!=="true"));
 }
 
-function home(){
+function home(){inVid=false;
  st=null;const d=load(),L=lvOf(d.xp),stars=Object.values(d.best).reduce((a,b)=>a+b,0),base=TH[L-1],nx=TH[L],pct=L===5?100:Math.round((d.xp-base)/(nx-base)*100),np=PR.filter(p=>d.badges.includes(p[0])).length;
  $("#app").innerHTML=`<h1>Las cinco islas</h1><p class="sub">Aprende jugando, sube de nivel y reúne a todas las princesas del reino.</p><div class="summary"><span class="pill">⭐ ${stars}/25</span><span class="pill">✨ ${d.xp} puntos</span><span class="pill">🔥 ${d.streak} días</span><span class="pill" id="rem">⏳ ${rem()} min</span><button class="soft" id="tr">👸 Mi reino ${np}/${PR.length}</button></div><div class="panel"><b>Nivel ${L}: ${LV[L-1]}</b><div class="bar" aria-label="Progreso de nivel"><span style="width:${pct}%"></span></div><small>${L===5?"¡Eres la reina sabia del reino!":`${nx-d.xp} puntos para el nivel ${L+1}`}</small></div><div class="map">${Object.entries(AREAS).map(([k,a])=>{const open=unlocked(k,d),need=Math.max(0,a.unlock-d.xp);return `<button class="isl" data-a="${k}" style="--c:${a.c}" ${open?"":"disabled"}><span class="em">${open?a.e:"🔒"}</span><span>${a.n}<small>${a.d}</small></span><span>${"⭐".repeat(d.best[k]||0)}${"☆".repeat(5-(d.best[k]||0))}</span>${open?"":`<span class="lock">Faltan ${need} puntos</span>`}</button>`}).join("")}</div><button class="soft" id="vd" style="width:100%;margin-top:14px;font-size:1.1rem;padding:12px">📺 Vídeos de clase</button>`;
  document.querySelectorAll(".isl:not(:disabled)").forEach(b=>b.onclick=()=>choose(b.dataset.a));$("#tr").onclick=reino;$("#vd").onclick=videos;
